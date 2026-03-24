@@ -1,97 +1,10 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { MouseEvent as ReactMouseEvent } from "react";
+import { CardBody, CardContainer, CardItem } from "@/components/ui/ThreeDCard";
 
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  color: "primary" | "secondary";
-  offset: boolean;
-}
-
-const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const mouseXSpring = useSpring(x);
-  const mouseYSpring = useSpring(y);
-
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
-
-  const handleMouseMove = (e: ReactMouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
-    x.set(xPct);
-    y.set(yPct);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: index * 0.2 }}
-      viewport={{ once: true }}
-      className={`group relative ${project.offset ? "md:mt-24" : ""}`}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: "preserve-3d",
-      }}
-    >
-      <div
-        className="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden glass-card"
-        style={{ transform: "translateZ(50px)", transformStyle: "preserve-3d" }}
-      >
-        <Image
-          src={project.image}
-          alt={project.title}
-          fill
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 opacity-60 group-hover:opacity-100"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-90" />
-        <div className="absolute bottom-0 left-0 p-10 w-full" style={{ transform: "translateZ(50px)" }}>
-          <div className="flex gap-2 mb-4">
-            {project.tags.map((tag: string) => (
-              <span
-                key={tag}
-                className={`text-[10px] font-headline font-bold ${
-                  project.color === "primary" ? "bg-primary/20 text-primary" : "bg-secondary/20 text-secondary"
-                } px-3 py-1 rounded-full`}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-          <h4 className="text-3xl font-headline font-bold mb-2">{project.title}</h4>
-          <p className="text-on-surface-variant mb-6 max-w-sm">{project.description}</p>
-          <button className="material-symbols-outlined p-3 rounded-full border border-white/20 hover:bg-white text-white hover:text-surface transition-all">
-            arrow_outward
-          </button>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
-const projects: Project[] = [
+const projects = [
   {
     id: "NEBULA_DEX",
     title: "NEBULA_DEX",
@@ -147,9 +60,50 @@ const Projects = () => {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12" style={{ perspective: "1000px" }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+            <CardContainer key={project.id} className="inter-var">
+              <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
+                <CardItem translateZ="50" className="text-xl font-bold text-neutral-600 dark:text-white">
+                  {project.title}
+                </CardItem>
+                <CardItem as="p" translateZ="60" className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300">
+                  {project.description}
+                </CardItem>
+                <CardItem translateZ="100" className="w-full mt-4">
+                  <Image
+                    src={project.image}
+                    height="1000"
+                    width="1000"
+                    className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                    alt={project.title}
+                  />
+                </CardItem>
+                <div className="flex justify-between items-center mt-20">
+                  <div className="flex gap-2">
+                    {project.tags.map((tag) => (
+                      <CardItem
+                        key={tag}
+                        translateZ={20}
+                        as="span"
+                        className={`text-[10px] font-headline font-bold ${
+                          project.color === "primary" ? "bg-primary/20 text-primary" : "bg-secondary/20 text-secondary"
+                        } px-3 py-1 rounded-full`}
+                      >
+                        {tag}
+                      </CardItem>
+                    ))}
+                  </div>
+                  <CardItem
+                    translateZ={20}
+                    as="button"
+                    className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+                  >
+                    Explore
+                  </CardItem>
+                </div>
+              </CardBody>
+            </CardContainer>
           ))}
         </div>
       </div>

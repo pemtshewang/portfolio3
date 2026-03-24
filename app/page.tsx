@@ -7,18 +7,21 @@ import Experience from "@/sections/Experience";
 import Values from "@/sections/Values";
 import Contact from "@/sections/Contact";
 import Footer from "@/components/Footer";
+import { TracingBeam } from "@/components/ui/TracingBeam";
 
 export default function Home() {
   return (
     <main className="relative">
       <Navbar />
       <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Values />
-      <Contact />
+      <TracingBeam className="px-6">
+        <About />
+        <Skills />
+        <Projects />
+        <Experience />
+        <Values />
+        <Contact />
+      </TracingBeam>
       <Footer />
     </main>
   );

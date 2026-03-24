@@ -5,8 +5,11 @@
 :root {
   --background: #0e0e0e;
   --foreground: #ffffff;
+  --primary: #8ff5ff;
   --primary-rgb: 143, 245, 255;
+  --secondary: #ac89ff;
   --secondary-rgb: 172, 137, 255;
+  --tertiary: #8995ff;
   --tertiary-rgb: 137, 149, 255;
 }
 

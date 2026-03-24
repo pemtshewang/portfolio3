@@ -1,8 +1,10 @@
 "use client";
 
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import Link from "next/link";
+import { BackgroundBeams } from "@/components/ui/BackgroundBeams";
+import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
 
 const Hero = () => {
   const ref = useRef<HTMLElement>(null);
@@ -11,51 +13,19 @@ const Hero = () => {
     offset: ["start start", "end start"],
   });
 
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springConfig = { damping: 25, stiffness: 150 };
-  const springX = useSpring(mouseX, springConfig);
-  const springY = useSpring(mouseY, springConfig);
-
-  const moveX = useTransform(springX, [-0.5, 0.5], ["-2%", "2%"]);
-  const moveY = useTransform(springY, [-0.5, 0.5], ["-2%", "2%"]);
-
-  const scrollBackground = useTransform(scrollYProgress, [0, 1], [0, 500]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const { innerWidth, innerHeight } = window;
-      mouseX.set(e.clientX / innerWidth - 0.5);
-      mouseY.set(e.clientY / innerHeight - 0.5);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
 
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-neutral-950"
       id="identity"
     >
-      <motion.div style={{ opacity, x: moveX, y: moveY }} className="absolute inset-0 z-0">
-        <motion.div style={{ y: scrollBackground }} className="absolute inset-0">
+      <BackgroundBeams className="opacity-40" />
+      <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
         <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-[120px]"></div>
         <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-secondary/20 rounded-full blur-[120px]"></div>
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage:
-              "url('https://lh3.googleusercontent.com/aida-public/AB6AXuB-4PsGwIX8PsNNqYguaTRML8k9FlXX4vWbrIPjyX8EUtdUIiqlvd2IQby5BlFbOIhkVu62oGrIpf_lhlbFV3FclZo3-diFDfHpjf11qx-06T6LKZMDJwxCM1hPInDCnusYhEqKJ9htyilTjovz_6KrRltpfCR4Tc3bfhfnB-0ILvGhsKVNXHHaHx_tE4WMOTjJVtrwA6CatYT-PlSAVbGEL0eTGxQSU_9v8Plx573LhKToMK1uGfZuIFRBreG7J9uExjAqRVn00OM')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          aria-hidden="true"
-        ></div>
-        </motion.div>
       </motion.div>
 
       <div className="relative z-10 container mx-auto px-6 flex flex-col items-center text-center">
@@ -69,17 +39,12 @@ const Hero = () => {
           System Online: v4.2.0
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-headline text-6xl md:text-9xl font-bold tracking-tighter text-white mb-4 leading-none"
-        >
-          ALEX{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-tertiary">
-            RIVERS
-          </span>
-        </motion.h1>
+        <div className="mb-4">
+          <TextGenerateEffect
+            words="ALEX RIVERS"
+            className="text-6xl md:text-9xl font-headline font-bold tracking-tighter text-white leading-none"
+          />
+        </div>
 
         <motion.p
           initial={{ opacity: 0, y: 30 }}

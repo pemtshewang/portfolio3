@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { BackgroundBeams } from "@/components/ui/BackgroundBeams";
 
 const Contact = () => {
   return (
-    <section className="py-32 relative overflow-hidden bg-surface-container-low" id="connect">
+    <section className="py-32 relative overflow-hidden bg-neutral-950" id="connect">
+      <BackgroundBeams />
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}

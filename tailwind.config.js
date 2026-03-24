@@ -67,6 +67,16 @@ module.exports = {
         "label": ["var(--font-space-grotesk)"]
       },
       borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+      animation: {
+        beam: "beam 4s infinite linear",
+      },
+      keyframes: {
+        beam: {
+          "0%": { transform: "translateX(-100%) translateY(0)", opacity: 0 },
+          "50%": { opacity: 1 },
+          "100%": { transform: "translateX(200%) translateY(0)", opacity: 0 },
+        },
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],
