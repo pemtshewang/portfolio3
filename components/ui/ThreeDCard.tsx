@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -120,5 +120,3 @@ export const CardItem = ({
     </Tag>
   );
 };
-
-import { useRef } from "react";
