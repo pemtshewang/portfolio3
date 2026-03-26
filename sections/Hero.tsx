@@ -42,7 +42,7 @@ const Hero = () => {
 
         <div className="mb-6 max-w-5xl">
           <TextGenerateEffect
-            words="ALEX RIVERS"
+            words="PEM TSHEWANG"
             className="text-6xl md:text-8xl lg:text-9xl font-headline font-bold tracking-tighter text-white leading-none uppercase"
           />
         </div>

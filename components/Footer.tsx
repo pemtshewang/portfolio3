@@ -4,14 +4,12 @@ const Footer = () => {
   return (
     <footer className="w-full py-16 flex flex-col md:flex-row justify-between items-center px-12 gap-8 bg-transparent border-t border-white/5 mt-32">
       <div className="font-body text-[10px] tracking-[0.2em] uppercase opacity-40 text-neutral-400 text-center md:text-left">
-        © 2024 DIGITAL_ASTRAL. ARCHIVED IN THE NEBULA.
+        © 2024 ARCHIVED USING ACETERNITY.
       </div>
       <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10 font-body text-[10px] tracking-[0.2em] uppercase">
         {[
-          { label: "Github", href: "#" },
-          { label: "Mirror", href: "#" },
-          { label: "Farcaster", href: "#" },
-          { label: "LinkedIn", href: "#" }
+          { label: "Github", href: "https://github.com/pemtshewang" },
+          { label: "LinkedIn", href: "https://linkedin.com/pemtshewang" },
         ].map((link) => (
           <Link
             key={link.label}

@@ -42,25 +42,42 @@ const About = () => {
                 Identity Profile
               </div>
               <h2 className="text-5xl md:text-6xl font-headline font-bold leading-tight text-white tracking-tighter">
-                Crafting the Future <br/>
+                Crafting the Future <br />
                 <span className="text-[#8ff5ff]">of Web Systems</span>
               </h2>
               <p className="text-neutral-400 text-lg md:text-xl leading-relaxed font-light">
-                I am a full-stack engineer with a passion for decentralization and cinematic user experiences. I don't
-                just build websites; I construct digital environments that respond to human intent.
+                I am a full-stack engineer with a passion for decentralization.
+                Interested with WEB3 and hacking into systems anonmyously. I
+                don't just build websites; I construct digital environments that
+                respond to human intent.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t border-white/5">
               <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300">
-                <h4 className="text-[#8ff5ff] font-headline font-bold mb-4 uppercase text-xs tracking-[0.2em]">The Journey</h4>
+                <h4 className="text-[#8ff5ff] font-headline font-bold mb-4 uppercase text-xs tracking-[0.2em]">
+                  The Journey
+                </h4>
                 <p className="text-neutral-400 text-sm leading-relaxed font-light">
-                  From procedural logic to reactive state management, my path is driven by architectural elegance and code integrity.
+                  From procedural logic to reactive state management, my path is
+                  driven by architectural elegance and code integrity.
                 </p>
               </div>
               <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300">
-                <h4 className="text-[#ac89ff] font-headline font-bold mb-4 uppercase text-xs tracking-[0.2em]">What I'm Building</h4>
+                <h4 className="text-[#ac89ff] font-headline font-bold mb-4 uppercase text-xs tracking-[0.2em]">
+                  What I'm Building
+                </h4>
                 <p className="text-neutral-400 text-sm leading-relaxed font-light">
-                  Currently focused on high-performance UI libraries, DeFi protocols, and immersive Web3-ready ecosystems.
+                  Currently focused on high-performance UI libraries, DeFi
+                  protocols, and immersive Web3-ready ecosystems.
+                </p>
+              </div>
+              <div className="p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300">
+                <h4 className="text-[#ac89ff] font-headline font-bold mb-4 uppercase text-xs tracking-[0.2em]">
+                  What I'm Exploring
+                </h4>
+                <p className="text-neutral-400 text-sm leading-relaxed font-light">
+                  Pentesting into live systems and moulding myself into bounty
+                  HUNTER
                 </p>
               </div>
             </div>
